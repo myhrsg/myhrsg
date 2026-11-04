@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "myhrsg.org",
+  "Id": "bd2e2b4d-485b-4e07-aefc-46f57eea2921"
+}

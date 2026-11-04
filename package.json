@@ -1,0 +1,17 @@
+{
+  "name": "myhrsg-root",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "client:install": "cd client && npm install",
+    "server:install": "cd server && npm install",
+    "install-all": "npm run client:install && npm run server:install",
+    "dev": "cd server && npm run dev",
+    "start": "cd server && npm run start",
+    "build": "cd client && npm run build"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "react-helmet-async": "^3.0.0"
+  }
+}

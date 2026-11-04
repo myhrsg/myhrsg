@@ -1,0 +1,90 @@
+.star-border-container {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 2px; /* Border thickness */
+  border-radius: 14px;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.star-border-container:hover {
+  transform: scale(1.05);
+}
+
+.star-border-container:active {
+  transform: scale(0.98);
+}
+
+.star-border-outer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 13px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The rotating star effect */
+.star-border-outer::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    transparent 30%,
+    var(--border-color) 45%,
+    var(--border-color) 55%,
+    transparent 70%,
+    transparent 100%
+  );
+  animation: star-rotate var(--speed) linear infinite;
+}
+
+@keyframes star-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.star-border-inner {
+  position: relative;
+  z-index: 1;
+  background: #0f172a; /* Slate-900 */
+  border-radius: 12px;
+  margin: 1px;
+  padding: 12px 24px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  box-sizing: border-box;
+}
+
+/* Glow effect */
+.star-border-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: var(--border-color);
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.star-border-container:hover::after {
+  opacity: 0.4;
+}

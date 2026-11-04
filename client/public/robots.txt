@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /login
+Disallow: /complete-profile
+Disallow: /verify-otp
+Allow: /
+
+Sitemap: https://www.myhrsg.org/sitemap.xml

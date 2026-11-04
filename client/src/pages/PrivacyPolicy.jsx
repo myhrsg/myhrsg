@@ -18,7 +18,7 @@ const PrivacyPolicy = () => {
         
         {/* Navigation Back Link */}
         <div className="mb-8">
-          <Link className="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-800 transition-colors" to="/">
+          <Link className="inline-flex items-center text-sm font-medium text-[#0a66c2] hover:text-[#084d91] transition-colors" to="/">
             ← Back to Home
           </Link>
         </div>
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
         {/* Content Body */}
         <article className="prose prose-slate max-w-none space-y-6 text-slate-600 leading-relaxed">
           <p className="text-base sm:text-lg text-slate-700 font-normal">
-            <strong>myHRSG</strong> respects your privacy. This policy explains how we handle personal information when you use <a href="https://www.myhrsg.org" className="text-indigo-600 hover:underline">www.myhrsg.org</a>, join our community, take part in events, contact us or submit a sponsorship or partnership enquiry, including through our social media lead forms.
+            <strong>myHRSG</strong> respects your privacy. This policy explains how we handle personal information when you use <a href="https://www.myhrsg.org" className="text-[#0a66c2] hover:underline font-medium">www.myhrsg.org</a>, join our community, take part in events, contact us or submit a sponsorship or partnership enquiry, including through our social media lead forms.
           </p>
 
           <section>
@@ -96,7 +96,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-xl font-semibold text-slate-900 mt-8 mb-3">Your choices and contact</h2>
             <p>
-              You can contact <a href="mailto:hello@myhrsg.org" className="text-indigo-600 font-medium hover:underline">hello@myhrsg.org</a> to ask about your personal information, request a correction or deletion, withdraw a consent where applicable, change communication preferences or raise a privacy concern. We may need to verify your identity before responding. Requests are handled subject to applicable law and any relevant recordkeeping requirements.
+              You can contact us through our <Link to="/contact" className="text-[#0a66c2] font-semibold hover:underline">Contact page</Link> or email <a href="mailto:hello@myhrsg.org" className="text-[#0a66c2] font-medium hover:underline">hello@myhrsg.org</a> to ask about your personal information, request a correction or deletion, withdraw a consent where applicable, change communication preferences or raise a privacy concern. We may need to verify your identity before responding. Requests are handled subject to applicable law and any relevant recordkeeping requirements.
             </p>
           </section>
 
@@ -113,12 +113,12 @@ const PrivacyPolicy = () => {
               <p className="text-sm font-semibold text-slate-900">Have questions about our privacy practices?</p>
               <p className="text-sm text-slate-600">Email: hello@myhrsg.org</p>
             </div>
-            <a 
-              href="mailto:hello@myhrsg.org" 
-              className="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-lg hover:bg-slate-800 transition-colors"
+            <Link 
+              to="/contact" 
+              className="px-5 py-2.5 bg-[#0a66c2] hover:bg-[#084d91] text-white text-sm font-semibold rounded-xl transition-all shadow-sm hover:shadow-md inline-flex items-center gap-2"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </article>
       </div>

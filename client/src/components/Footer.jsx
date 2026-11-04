@@ -101,14 +101,6 @@ export const Footer = () => (
                 <Instagram size={24} />
               </a>
             </li>
-            <li className="pt-1">
-              <Link
-                to="/privacy-policy"
-                className="text-sm text-gray-400 hover:text-white transition-colors underline underline-offset-4"
-              >
-                Privacy Policy
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

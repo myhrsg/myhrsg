@@ -9,6 +9,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { API_URL } from "../config.js";
 
 const Login = () => {
   const [role, setRole] = useState("member");
@@ -45,12 +46,10 @@ const Login = () => {
   }, [navigate]);
 
   const handleLinkedInLogin = () => {
-    const API_URL = import.meta.env.VITE_API_URL || "/api";
     window.location.href = `${API_URL}/auth/linkedin?role=${role}`;
   };
 
   const handleGoogleLogin = () => {
-    const API_URL = import.meta.env.VITE_API_URL || "/api";
     window.location.href = `${API_URL}/auth/google?role=${role}`;
   };
 
@@ -66,7 +65,6 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "/api";
       const response = await fetch(`${API_URL}/auth/manual`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

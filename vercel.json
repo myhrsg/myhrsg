@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://myhrsg.vercel.app/api/$1"
+      "source": "/api/:path*",
+      "destination": "https://myhrsg-omega.vercel.app/api/:path*"
     },
     {
       "source": "/((?!api/).*)",

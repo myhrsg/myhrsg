@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import axios from 'axios';
+import { API_URL } from '../../config.js';
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -22,8 +23,7 @@ const ContactForm = () => {
         setStatus('loading');
         
         try {
-            const apiBase = import.meta.env.VITE_API_BASE_URL || '/api';
-            await axios.post(`${apiBase}/contact/submit`, formData);
+            await axios.post(`${API_URL}/contact/submit`, formData);
             setStatus('success');
             setFormData({ name: '', email: '', subject: '', message: '' });
             setTimeout(() => setStatus('idle'), 5000);

@@ -13,7 +13,7 @@ router.get("/linkedin", (req, res) => {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: process.env.LINKEDIN_CLIENT_ID,
-    redirect_uri: `${process.env.APP_URL}/api/auth/linkedin/callback`,
+    redirect_uri: process.env.REDIRECT_URI || `${process.env.APP_URL}/api/auth/linkedin/callback`,
     scope: "openid profile email",
     state,
   });
@@ -46,7 +46,7 @@ router.get("/linkedin/callback", async (req, res) => {
       body: new URLSearchParams({
         grant_type: "authorization_code",
         code,
-        redirect_uri: `${process.env.APP_URL}/api/auth/linkedin/callback`,
+        redirect_uri: process.env.REDIRECT_URI || `${process.env.APP_URL}/api/auth/linkedin/callback`,
         client_id: process.env.LINKEDIN_CLIENT_ID,
         client_secret: process.env.LINKEDIN_CLIENT_SECRET,
       }),
@@ -97,7 +97,7 @@ router.get("/google", (req, res) => {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: process.env.GOOGLE_CLIENT_ID,
-    redirect_uri: `${process.env.APP_URL}/api/auth/google/callback`,
+    redirect_uri: process.env.GOOGLE_REDIRECT_URI || `${process.env.APP_URL}/api/auth/google/callback`,
     scope: "openid profile email",
     state,
     access_type: "offline",
@@ -132,7 +132,7 @@ router.get("/google/callback", async (req, res) => {
       body: new URLSearchParams({
         grant_type: "authorization_code",
         code,
-        redirect_uri: `${process.env.APP_URL}/api/auth/google/callback`,
+        redirect_uri: process.env.GOOGLE_REDIRECT_URI || `${process.env.APP_URL}/api/auth/google/callback`,
         client_id: process.env.GOOGLE_CLIENT_ID,
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
       }),

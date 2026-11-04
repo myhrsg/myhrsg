@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { UserCircle, ArrowRight, ShieldCheck, Loader2 } from "lucide-react";
+import { API_URL } from "../config.js";
 
 export const CompleteProfile = () => {
   const navigate = useNavigate();
@@ -67,7 +68,6 @@ export const CompleteProfile = () => {
     setLinkedinError("");
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "/api";
       const res = await fetch(`${API_URL}/auth/complete-profile`, {
         method: "POST",
         headers: {

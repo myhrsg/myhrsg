@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { ShieldCheck, ArrowRight, RefreshCcw } from "lucide-react";
+import { API_URL } from "../config.js";
 
 export const VerifyOTP = () => {
   const [searchParams] = useSearchParams();
@@ -33,7 +34,6 @@ export const VerifyOTP = () => {
     setError("");
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "/api";
       const res = await fetch(`${API_URL}/auth/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -66,7 +66,6 @@ export const VerifyOTP = () => {
 
   const resendOtp = async () => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "/api";
       const res = await fetch(`${API_URL}/auth/resend-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

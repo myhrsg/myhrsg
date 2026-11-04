@@ -10,7 +10,7 @@ passport.use(
         {
             clientID: process.env.LINKEDIN_CLIENT_ID,
             clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-            callbackURL: `${process.env.APP_URL}/api/auth/linkedin/callback`,
+            callbackURL: process.env.REDIRECT_URI || `${process.env.APP_URL}/api/auth/linkedin/callback`,
             scope: ["openid", "profile", "email"],
             // LinkedIn now uses OIDC — must point to the userinfo endpoint
             profileURL: "https://api.linkedin.com/v2/userinfo",

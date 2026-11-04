@@ -26,10 +26,35 @@ app.use(async (req, res, next) => {
   }
 });
 
-// Middleware
+// CORS Configuration
+const allowedOrigins = [
+  "https://www.myhrsg.org",
+  "https://myhrsg.org",
+  "https://myhrsg-6j1c.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:3000",
+];
+
+if (process.env.CLIENT_URL && !allowedOrigins.includes(process.env.CLIENT_URL.replace(/\/$/, ""))) {
+  allowedOrigins.push(process.env.CLIENT_URL.replace(/\/$/, ""));
+}
+if (process.env.APP_URL && !allowedOrigins.includes(process.env.APP_URL.replace(/\/$/, ""))) {
+  allowedOrigins.push(process.env.APP_URL.replace(/\/$/, ""));
+}
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173", 
-  credentials: true
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, or server-to-server)
+    if (!origin) return callback(null, true);
+    const normalizedOrigin = origin.replace(/\/$/, "");
+    if (allowedOrigins.includes(normalizedOrigin)) {
+      return callback(null, true);
+    }
+    return callback(new Error(`CORS error: Origin ${origin} not allowed by CORS policy`));
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept"],
 }));
 app.use(express.json());
 app.use(passport.initialize());

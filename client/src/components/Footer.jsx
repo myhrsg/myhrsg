@@ -86,6 +86,7 @@ export const Footer = () => (
                 href="https://www.linkedin.com/company/myhrsg/" 
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="hover:text-[#0A66C2] transition-all"
               >
                 <Linkedin size={24} />
@@ -94,16 +95,35 @@ export const Footer = () => (
                 href="https://www.instagram.com/myhrsg/" 
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="hover:text-[#0A66C2] transition-all"
               >
                 <Instagram size={24} />
               </a>
             </li>
+            <li className="pt-1">
+              <Link
+                to="/privacy-policy"
+                className="text-sm text-gray-400 hover:text-white transition-colors underline underline-offset-4"
+              >
+                Privacy Policy
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
-      <div className="mt-24 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-        &copy; {new Date().getFullYear()} myHRSG. All rights reserved.
+      <div className="mt-20 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-gray-400 text-sm gap-4">
+        <div className="flex items-center gap-6">
+          <Link
+            to="/privacy-policy"
+            className="hover:text-white transition-colors font-medium underline underline-offset-4"
+          >
+            Privacy Policy
+          </Link>
+        </div>
+        <div className="text-gray-500">
+          &copy; {new Date().getFullYear()} myHRSG. All rights reserved.
+        </div>
       </div>
     </div>
   </footer>

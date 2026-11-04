@@ -32,6 +32,7 @@ import { CompleteProfile } from "./pages/CompleteProfile.jsx";
 import { VerifyOTP } from "./pages/VerifyOTP.jsx";
 import Articles from "./pages/Articles.jsx";
 import Blog from "./pages/Blog.jsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 // --- Waitlist Gate: redirects pending members away from protected routes ---
 // --- Also forces incomplete profiles to /complete-profile ---
@@ -49,7 +50,7 @@ const WaitlistGate = ({ children }) => {
       const isProfileComplete = user.isProfileComplete;
 
       // Pages that should never be redirected away from
-      const exemptPaths = ["/login", "/verify-otp", "/complete-profile", "/waitlist"];
+      const exemptPaths = ["/login", "/verify-otp", "/complete-profile", "/waitlist", "/privacy-policy"];
       const isExempt = exemptPaths.some(p => location.pathname.startsWith(p));
       if (isExempt) return;
 
@@ -124,6 +125,7 @@ const AppContent = () => {
               <Route path="/partners" element={<Partners />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/membership" element={<Membership />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/login" element={<Login />} />
               <Route path="/complete-profile" element={<CompleteProfile />} />
               <Route path="/profile" element={<Profile />} />

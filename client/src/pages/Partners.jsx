@@ -4,6 +4,7 @@ import { CheckCircle, ArrowRight, CheckCircle2, AlertCircle, Handshake, Gem } fr
 import { api } from "../services/api";
 import SEOHead from "../components/SEOHead.jsx";
 import { TestimonialSlider } from "../components/TestimonialSlider.jsx";
+import ZohoPartnerForm from "../components/ZohoPartnerForm.jsx";
 
 const Reasons = [
   { title: "Strategic Visibility", desc: "Showcase your brand at the forefront of India's HR transformation." },
@@ -200,11 +201,17 @@ const Partners = () => {
         </div>
 
           {/* Form Column */}
-          <div id="inquiry-form" className="bg-white p-10 lg:p-14 rounded-[3.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.08)] border border-slate-100 relative items-start">
-            <div className="flex flex-col gap-8">
+          <div id="inquiry-form" className="bg-white p-6 sm:p-10 lg:p-14 rounded-[2.5rem] sm:rounded-[3.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.08)] border border-slate-100 relative items-start">
+            <div className="flex flex-col gap-8 w-full">
               <div>
-                <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-2">Become a Sponsor</h2>
-                <p className="text-slate-400 font-bold uppercase text-[10px] tracking-[0.2em]">Inquiry Form</p>
+                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-2">
+                  {inquiryType === "partner" ? "Become a Partner with myHRSG" : "Become a Sponsor"}
+                </h2>
+                <p className="text-slate-500 font-medium text-sm sm:text-base leading-relaxed">
+                  {inquiryType === "partner"
+                    ? "Collaborate with myHRSG and become part of a growing network of partners. Share your details through the form below, and our team will connect with you."
+                    : "Partner with us as a sponsor to gain brand visibility, showcase your HR innovations, and connect with leaders."}
+                </p>
               </div>
 
               {/* Inquiry Type Toggle */}
@@ -231,7 +238,10 @@ const Partners = () => {
                 </button>
               </div>
 
-              <form className="space-y-8" onSubmit={handleSubmit}>
+              {inquiryType === "partner" ? (
+                <ZohoPartnerForm />
+              ) : (
+                <form className="space-y-8" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black uppercase text-slate-400 tracking-widest pl-4">Full Name</label>
@@ -328,6 +338,7 @@ const Partners = () => {
                   )}
                 </button>
               </form>
+              )}
             </div>
           </div>
         </div>

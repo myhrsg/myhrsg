@@ -3,35 +3,33 @@ import { Loader2 } from "lucide-react";
 
 export const ZohoPartnerForm = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [iframeHeight, setIframeHeight] = useState("720px");
+  const [iframeHeight, setIframeHeight] = useState("500px");
   const iframeRef = useRef(null);
 
   const baseSrc =
-    "https://forms.zohopublic.in/myhrsg0gm1/form/BecomeaPartnerwithmyHRSG/formperma/O2QhI9ym9XySolPDHc9O5yuHOzLs_pXB-kbKnFld9AU";
+    "https://forms.zohopublic.in/hellomyh1/form/BecomePartner/formperma/e5IKTc0g91RvC17NU-czR8ID4q23ytbmilDCOrthdPQ";
 
   // Safely execute Zoho referrer-tracking functionality once on mount
   useEffect(() => {
     try {
-      const zf_frame = iframeRef.current || document.getElementById("ziframe_649441");
+      var zf_frame = iframeRef.current || document.getElementById("ziframe_649441");
       if (!zf_frame) return;
 
-      let ifrmSrc = zf_frame.src || baseSrc;
+      var ifrmSrc = zf_frame.src || baseSrc;
 
-      if (!/[?&]referrername=/.test(ifrmSrc)) {
-        let rfr = window.location.href;
+      if (!((new RegExp("[?&]referrername=")).test(ifrmSrc))) {
+        var rfr = window.location.href;
 
         try {
           rfr =
             window.self !== window.top
               ? window.top.location.href
-              : /^https?:\/\/[\w.-]+\.[a-zA-Z]{2,}/i.test(rfr)
-              ? rfr
-              : "";
+              : (/^https?:\/\/[\w.-]+\.[a-zA-Z]{2,}/i.test(rfr) ? rfr : "");
         } catch (e) {}
 
         if (rfr && rfr !== "") {
           if (rfr.length > 1800) {
-            const queryIndex = rfr.indexOf("?");
+            var queryIndex = rfr.indexOf("?");
             if (queryIndex > -1) {
               rfr = rfr.substring(0, queryIndex);
             }
@@ -41,7 +39,7 @@ export const ZohoPartnerForm = () => {
           }
 
           ifrmSrc +=
-            (ifrmSrc.indexOf("?") > 0 ? "&" : "?") +
+            ((ifrmSrc.indexOf("?") > 0) ? "&" : "?") +
             "referrername=" +
             encodeURIComponent(rfr);
         }
@@ -50,9 +48,7 @@ export const ZohoPartnerForm = () => {
       if (zf_frame.src !== ifrmSrc) {
         zf_frame.src = ifrmSrc;
       }
-    } catch (e) {
-      console.error("Zoho referrer tracking error:", e);
-    }
+    } catch (e) {}
   }, []);
 
   // Listen for Zoho dynamic iframe resize messages if emitted
@@ -94,14 +90,12 @@ export const ZohoPartnerForm = () => {
         title="Become a Partner with myHRSG"
         src={baseSrc}
         onLoad={() => setIsLoading(false)}
-        className="partner-form-iframe w-full rounded-2xl transition-opacity duration-300"
+        className="partner-form-iframe rounded-2xl transition-opacity duration-300 mx-auto"
         style={{
-          width: "100%",
-          minHeight: "680px",
           height: iframeHeight,
+          width: "99%",
           border: "none",
           display: "block",
-          overflow: "hidden",
         }}
         scrolling="auto"
       />
@@ -110,4 +104,3 @@ export const ZohoPartnerForm = () => {
 };
 
 export default ZohoPartnerForm;
-

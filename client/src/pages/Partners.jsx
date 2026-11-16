@@ -64,7 +64,29 @@ const Partners = () => {
     } catch (e) {
       // Ignore parse errors
     }
+
+    if (window.location.hash === "#inquiry-form") {
+      setTimeout(() => {
+        scrollToForm();
+      }, 300);
+    }
   }, []);
+
+  const scrollToForm = (e) => {
+    if (e) e.preventDefault();
+    const el = document.getElementById("inquiry-form");
+    if (el) {
+      const offset = 90; // Offset for sticky navbar
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = el.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -108,22 +130,29 @@ const Partners = () => {
       </div>
 
       {/* ── Hero Content ─────────────────────────────────────────── */}
-      <section className="relative pt-32 pb-16">
-
+      <section className="relative pt-28 md:pt-32 pb-12">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative z-10 text-center px-4"
+          className="relative z-10 text-center px-4 max-w-4xl mx-auto"
         >
-          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary border border-primary/20 text-[10px] font-black uppercase tracking-[0.3em] rounded-full mb-6">
-            Join the Movement
-          </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-slate-900 tracking-tight mb-4 italic">
             Strategic Partners and Sponsors
           </h1>
-          <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+          <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto font-medium leading-relaxed mb-8">
             Elevating the HR ecosystem through strategic collaboration and shared vision.
           </p>
+
+          <div className="flex justify-center">
+            <button
+              type="button"
+              onClick={scrollToForm}
+              className="btn-primary shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:scale-105 transition-all text-xs uppercase tracking-[0.2em] font-black py-4 px-8 flex items-center gap-3 cursor-pointer"
+            >
+              Become a Partner
+              <ArrowRight size={16} />
+            </button>
+          </div>
         </motion.div>
       </section>
 
